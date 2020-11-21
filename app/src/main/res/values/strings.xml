@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">FirebaseLogin</string>
-    <string name="facebook_app_id" />
-
-    <string name="fb_login_protocol_scheme" />
+    <string name="facebook_app_id">365660034695897</string>
+    <string name="fb_login_protocol_scheme">fb2168879406549184</string>
+    <string name="fb_button">CONTINUE WITH FACEBOOK</string>
 
 
 </resources>
