@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -90,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+
+
+
         //Facebook Login
         activityMainBinding.fbLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +103,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         processRequest();
+
+
+        //Facebook login method
+        login();
 
     }
 
@@ -199,6 +207,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
@@ -216,8 +225,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
 
-      // mCallbackManager.onActivityResult(requestCode, resultCode, data);
 
     }
 
@@ -230,13 +239,10 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-
-
                             updateUI(user);
 
                         } else {
                             // If sign in fails, display a message to the user.
-
                             Snackbar snackbar = Snackbar.make(activityMainBinding.getRoot(), "Authentication Failed", Snackbar.LENGTH_LONG);
                             snackbar.show();
                             updateUI(null);
@@ -253,8 +259,6 @@ public class MainActivity extends AppCompatActivity {
             //Toast.makeText(this,"U Signed In successfully",Toast.LENGTH_LONG).show();
             startActivity(new Intent(this,DashBoard.class));
 
-        }else {
-            Toast.makeText(this,"U Didnt signed in",Toast.LENGTH_LONG).show();
         }
 
     }
