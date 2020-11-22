@@ -30,6 +30,13 @@ public class DashBoard extends AppCompatActivity {
             }
         });
 
+        activityDashBoardBinding.btnCurrentLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashBoard.this, MapsActivity.class));
+            }
+        });
+
     }
 
     public void signOut() {
